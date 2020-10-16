@@ -67,7 +67,7 @@ $_SESSION['admin']=array('vivek');
 												<td>'.$row["email"].'</td>
 												<td>'.$row["dob"].'</td>
 												<td>'.$row["address"].'</td>
-												<td><a href="javascript:void(0)" data-id='.$row["id"].' class="edit-product">edit</a> | <a href="deleteuser.php?deleteid='.$row["id"].'" >delete</a> </td>	
+												<td><a href="deleteuser.php?deleteid='.$row["id"].'" >delete</a> </td>	
 											</tr>';
 								}
 								$value.='</tbody></table>';

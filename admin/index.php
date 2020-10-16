@@ -5,21 +5,6 @@ session_start();
 // }
 $_SESSION['admin']=array('vivek');
 ?>
-<?php
-if (isset($_POST['submit'])) {
-	include 'config.php';
-	$categoryid=$_POST['categoryid'];
-	$name=$_POST['productname'];
-	$price=$_POST['price'];
-	$shortdescription=$_POST['shortdescription'];
-	$longdescription=$_POST['longdescription'];
-	$sql="INSERT INTO `products` (`name`,`price`,`short_description`,`long_description`,`category_id`) VALUES ('$name', '$price', '$shortdescription', '$longdescription', '$categoryid')";
-	if ($conn->query($sql)===true) {
-        echo 'success';
-
-	} 
-}
-?>
 <?php include 'header.php'; ?>
     <?php include 'sidebar.php'; ?>
 		<div id="main-content"> <!-- Main Content Section with everything -->
@@ -45,7 +30,7 @@ if (isset($_POST['submit'])) {
 					<h3>Products</h3>
 					
 					<ul class="content-box-tabs">
-						<li><a href="#tab1" class="default-tab">Pdt.</a></li> <!-- href must be unique and match the id of target div -->
+						<li><a href="#tab1" class="default-tab">Products</a></li> <!-- href must be unique and match the id of target div -->
 						<li><a href="#tab2">Add</a></li>
 					</ul>
 					
@@ -65,7 +50,9 @@ if (isset($_POST['submit'])) {
 								   <th>price</th>
 								   <th>ShortDescription</th>
 								   <th>Long Description</th>
+								   <th>Category</th>
 								   <th>Category ID</th>
+								   <th>Tags</th>
 								   <th>Action</th>
 								</tr>
 								
@@ -85,8 +72,10 @@ if (isset($_POST['submit'])) {
 												<td>'.$row["price"].'</td>
 												<td>'.$row["short_description"].'</td>
 												<td>'.$row["long_description"].'</td>
+												<td>'.$row["category"].'</td>
 												<td>'.$row["category_id"].'</td>
-												<td><a href="javascript:void(0)" data-id='.$row["id"].' class="edit-product">edit</a> | <a href="javascript:void(0)" data-id='.$row["id"].' class="delete-product">delete</a> </td>	
+												<td>'.$row["tags"].'</td>
+												<td><a href="javascript:void(0)" data-id='.$row["id"].' class="edit-product">edit</a> | <a href="deleteproduct.php?deleteid='.$row["id"].'" >delete</a> </td>	
 											</tr>';
 								}
 								$value.='</tbody></table>';
@@ -98,7 +87,7 @@ if (isset($_POST['submit'])) {
 					
 					<div class="tab-content" id="tab2">
 					
-						<form action="index.php" method="POST">
+						<form action="addproducts.php" method="POST">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								
@@ -125,6 +114,28 @@ if (isset($_POST['submit'])) {
 									<input class="text-input large-input" type="text" id="large-input" name="longdescription" />
 								</p>
 
+
+								<p>
+								<label>Category</label>
+								<select name="dropdown" class="small-input">
+								<option value="Men">Men</option>
+								<option value="Women">Women</option>
+								<option value="Kids">Kids</option>
+								<option value="Electronics">Electronics</option>
+								<option value="Sports">Sports</option>
+								</select>
+								</p>
+
+								<p>
+								<label>Tags</label>
+								<input type="checkbox" name="fashion" value="fashion" /> Fashion
+								<input type="checkbox" name="ecommerce" value="ecommerce"/> Ecommerce
+								<input type="checkbox" name="shop" value="shop"/> Shop
+								<input type="checkbox" name="handbag" value="handbag"/> Hand Bag
+								<input type="checkbox" name="laptop" value="laptop"/> Laptop
+								<input type="checkbox" name="headphone" value="headphone"/> Headphone
+								</p>
+
 							
 								<p>
 									<input class="button" type="submit" value="Submit" name='submit'/>
@@ -135,17 +146,7 @@ if (isset($_POST['submit'])) {
 							<div class="clear"></div><!-- End .clear -->
 							
 						</form>
-						<script>
 						
-						    $('#tab1').on('click','.delete-product',function(){
-								$id=$(this).data('id');
-								$.ajax({
-								method: "POST",
-								url: "ajax.php",
-								data: { id: $id, action: 'deleteproduct'}
-								})
-						   });
-						</script>
 						
 					</div> <!-- End #tab2 -->        
 					

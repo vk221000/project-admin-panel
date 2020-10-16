@@ -50,7 +50,10 @@ $_SESSION['admin']=array('vivek');
 								   <th>price</th>
 								   <th>ShortDescription</th>
 								   <th>Long Description</th>
+								   <th>Category</th>
 								   <th>Category ID</th>
+								   <th>Tags</th>
+								   <th>Color</th>
 								   <th>Action</th>
 								</tr>
 								
@@ -70,8 +73,11 @@ $_SESSION['admin']=array('vivek');
 												<td>'.$row["price"].'</td>
 												<td>'.$row["short_description"].'</td>
 												<td>'.$row["long_description"].'</td>
+												<td>'.$row["category"].'</td>
 												<td>'.$row["category_id"].'</td>
-												<td><a href="javascript:void(0)" data-id='.$row["id"].' class="edit-product">edit</a> | <a href="deleteproduct.php?deleteid='.$row["id"].'" >delete</a> </td>	
+												<td>'.$row["tags"].'</td>
+												<td>'.$row["color"].'</td>
+												<td><a href="deleteproduct.php?deleteid='.$row["id"].'" >delete</a> </td>	
 											</tr>';
 								}
 								$value.='</tbody></table>';
@@ -108,6 +114,44 @@ $_SESSION['admin']=array('vivek');
 								<p>
 									<label>Long Description</label>
 									<input class="text-input large-input" type="text" id="large-input" name="longdescription" />
+								</p>
+
+
+								<p>
+								<label>Category</label>
+								<select name="dropdown" class="small-input">
+								<option value="Men">Men</option>
+								<option value="Women">Women</option>
+								<option value="Kids">Kids</option>
+								<option value="Electronics">Electronics</option>
+								<option value="Sports">Sports</option>
+								</select>
+								</p>
+								<p>
+								<label>Color</label>
+								<select name="dropdown1" class="small-input">
+								<option value="green">Green</option>
+								<option value="yellow">Yellow</option>
+								<option value="pink">Pink</option>
+								<option value="purple">Purple</option>
+								<option value="blue">Blue</option>
+								<option value="orange">Orange</option>
+								<option value="gray">Gray</option>
+								<option value="black">Black</option>
+								<option value="cyan">Cyan</option>
+								<option value="olive">Olive</option>
+								<option value="orchid">Orchid</option>
+								</select>
+								</p>
+
+								<p>
+								<label>Tags</label>
+								<input type="checkbox" name="fashion" value="fashion" /> Fashion
+								<input type="checkbox" name="ecommerce" value="ecommerce"/> Ecommerce
+								<input type="checkbox" name="shop" value="shop"/> Shop
+								<input type="checkbox" name="handbag" value="handbag"/> Hand Bag
+								<input type="checkbox" name="laptop" value="laptop"/> Laptop
+								<input type="checkbox" name="headphone" value="headphone"/> Headphone
 								</p>
 
 							
