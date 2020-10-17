@@ -54,38 +54,38 @@
                     include 'admin/config.php';
                     $html='<ul class="aa-product-catg">';
                     if ((!isset($_SESSION['tag'])) && (!isset($_SESSION['cat'])) && (!isset($_SESSION['col']))) {
-                      $sql="SELECT * FROM `products`";
+                      $sql="SELECT * FROM `products` LIMIT 10";
                     } else {
                       if (isset($_SESSION['tag']) && (isset($_SESSION['cat'])) && (isset($_SESSION['col']))) {
                         $category=$_SESSION['cat'][0];
                         $tag=$_SESSION['tag'][0];
                         $col=$_SESSION['col'][0];
-                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `tags`='$tag' AND `color`='$col'" ;
+                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `tags`='$tag' AND `color`='$col' LIMIT 10" ;
 
                       } elseif ((isset($_SESSION['cat'])) && (isset($_SESSION['tag']))) {
                         $category=$_SESSION['cat'][0];
                         $tag=$_SESSION['tag'][0];
-                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `tags`='$tag'";
+                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `tags`='$tag' LIMIT 10";
 
                       } elseif ((isset($_SESSION['cat'])) && (isset($_SESSION['col']))) {
                         $category=$_SESSION['cat'][0];
                         $color=$_SESSION['col'][0];
-                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `color`='$color'";
+                        $sql="SELECT * FROM `products` WHERE `category`='$category' AND `color`='$color' LIMIT 10";
 
                       } elseif ((isset($_SESSION['col'])) && (isset($_SESSION['tag']))) {
                         $color=$_SESSION['col'][0];
                         $tag=$_SESSION['tag'][0];
-                        $sql="SELECT * FROM `products` WHERE `color`='$color' AND `tags`='$tag'";
+                        $sql="SELECT * FROM `products` WHERE `color`='$color' AND `tags`='$tag' LIMIT 10";
 
                       } elseif (isset($_SESSION['col'])) {
                         $color=$_SESSION['col'][0];
-                        $sql="SELECT * FROM `products` WHERE `color`='$color'";
+                        $sql="SELECT * FROM `products` WHERE `color`='$color' LIMIT 10";
                       }  elseif (isset($_SESSION['cat'])) {
                         $category=$_SESSION['cat'][0];
-                        $sql="SELECT * FROM `products` WHERE `category`='$category'";
+                        $sql="SELECT * FROM `products` WHERE `category`='$category' LIMIT 10";
                       } elseif (isset($_SESSION['tag'])) {
                         $tag=$_SESSION['tag'][0];
-                        $sql="SELECT * FROM `products` WHERE `tags`='$tag'" ;
+                        $sql="SELECT * FROM `products` WHERE `tags`='$tag' LIMIT 10" ;
                       } 
                       
                     }
@@ -94,7 +94,7 @@
                       while ($row=$product->fetch_assoc()) {
                         $html.='<li>
                       <figure>
-                        <a class="aa-product-img" href="product-detail.php?id='.$row["id"].'"><img src="images/football.png" alt="polo shirt img"></a>
+                        <a class="aa-product-img" href="product-detail.php?id='.$row["id"].'"><img src='.$row["image"].' alt="polo shirt img" width="100" height="100"></a>
                         <a class="aa-add-card-btn" href="cart.php?id='.$row["id"].'"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                         <figcaption>
                           <h4 class="aa-product-title"><a href="#">'.$row["name"].'</a></h4>
@@ -283,63 +283,6 @@
               </div>                            
             </div>
             <!-- single sidebar -->
-            <!-- <div class="aa-sidebar-widget">
-              <h3>Recently Views</h3>
-              <div class="aa-recently-views">
-                <ul>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
-                </ul>
-              </div>                            
-            </div> -->
-            <!-- single sidebar -->
-            <!-- <div class="aa-sidebar-widget">
-              <h3>Top Rated Products</h3>
-              <div class="aa-recently-views">
-                <ul>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                  <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-1.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>
-                   <li>
-                    <a href="#" class="aa-cartbox-img"><img alt="img" src="img/woman-small-2.jpg"></a>
-                    <div class="aa-cartbox-info">
-                      <h4><a href="#">Product Name</a></h4>
-                      <p>1 x $250</p>
-                    </div>                    
-                  </li>                                      
-                </ul>
-              </div>                            
-            </div> -->
           </aside>
         </div>
        
@@ -347,25 +290,5 @@
     </div>
   </section>
   <!-- / product category -->
-
-
-  <!-- Subscribe section -->
-  <!-- <section id="aa-subscribe">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aa-subscribe-area">
-            <h3>Subscribe our newsletter </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!</p>
-            <form action="" class="aa-subscribe-form">
-              <input type="email" name="" id="" placeholder="Enter your Email">
-              <input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- / Subscribe section -->
   
   <?php include 'footer.php'; ?>

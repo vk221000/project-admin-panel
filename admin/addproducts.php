@@ -33,7 +33,9 @@ if (isset($_POST['submit'])) {
 	if ($tags=="") {
 		$tags="ecommerce";
 	}
-	$sql="INSERT INTO `products` (`name`,`price`,`short_description`,`long_description`,`category_id`, `category`, `tags`, `color`) VALUES ('$name', '$price', '$shortdescription', '$longdescription', '$categoryid', '$category', '$tags', '$color')";
+	move_uploaded_file($_FILES['image']['tmp_name'], "../images/".$_FILES['image']['name']);
+	$image="images/".$_FILES['image']['name']."";
+	$sql="INSERT INTO `products` (`name`,`price`,`short_description`,`long_description`,`category_id`, `category`, `tags`, `color`, `image`) VALUES ('$name', '$price', '$shortdescription', '$longdescription', '$categoryid', '$category', '$tags', '$color', '$image')";
 	if ($conn->query($sql)===true) {
         header('Location:manageproducts.php');
 

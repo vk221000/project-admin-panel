@@ -15,6 +15,7 @@ if (isset($_GET["id"])) {
         "id"=>$row['id'],
         "name"=>$row['name'],
         "price"=>$row['price'],
+        "image"=>$row['image'],
         "quantity"=>1
       );
       $flag=true;
@@ -79,7 +80,7 @@ if (isset($_GET["id"])) {
                       $total+=$val["quantity"]*$val["price"];
                       $html.='<tr>
                         <td><a class="remove" href="deletecart.php?deleteid='.$val["id"].'"><fa class="fa fa-close"></fa></a></td>
-                        <td><a href="#"><img src="images/football.png" alt="img"></a></td>
+                        <td><a href="#"><img src='.$val["image"].' alt="img"></a></td>
                         <td><a class="aa-cart-title" href="#">'.$val["name"].'</a></td>
                         <td>$'.$val["price"].'.00</td>
                         <td><input class="aa-cart-quantity" type="number" value="'.$val["quantity"].'"></td>

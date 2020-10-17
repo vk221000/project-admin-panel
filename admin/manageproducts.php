@@ -89,7 +89,7 @@ $_SESSION['admin']=array('vivek');
 					
 					<div class="tab-content" id="tab2">
 					
-						<form action="addproducts.php" method="POST">
+						<form action="addproducts.php" method="POST" enctype="multipart/form-data">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								
@@ -114,6 +114,10 @@ $_SESSION['admin']=array('vivek');
 								<p>
 									<label>Long Description</label>
 									<input class="text-input large-input" type="text" id="large-input" name="longdescription" />
+								</p>
+								<p>
+									<label>Image</label>
+									<input type='file' name='image'>
 								</p>
 
 

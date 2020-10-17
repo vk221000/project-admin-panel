@@ -140,7 +140,7 @@
                 <a class="aa-cart-link" href="#">
                   <span class="fa fa-shopping-basket"></span>
                   <span class="aa-cart-title">SHOPPING CART</span>
-                  <span class="aa-cart-notify"><?php echo sizeof($_SESSION['cart']);?></span>
+                  <span class="aa-cart-notify"><?php echo (isset($_SESSION['cart']) ? sizeof($_SESSION['cart']) : 0);?></span>
                 </a>
                 <div class="aa-cartbox-summary">
                 <?php
@@ -151,7 +151,7 @@
                   $total+=$val["quantity"]*$val["price"];
                   $html.='<ul>
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="images/football.png" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img src='.$val["image"].' alt="img"></a>
                       <div class="aa-cartbox-info">
                         <h4><a href="#">'.$val["name"].'</a></h4>
                         <p>'.$val["quantity"].' x $'.$val["price"].'</p>

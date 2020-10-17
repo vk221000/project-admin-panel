@@ -35,6 +35,7 @@
         $color=$row['color'];
         $tags=$row['tags'];
         $category=$row['category'];
+        $image=$row['image'];
       }
     }
     $html='<section id="aa-product-details">
@@ -49,19 +50,9 @@
                   <div class="aa-product-view-slider">                                
                     <div id="demo-1" class="simpleLens-gallery-container">
                       <div class="simpleLens-container">
-                        <div class="simpleLens-big-image-container"><a data-lens-image="images/football.png" class="simpleLens-lens-image"><img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image"></a></div>
+                        <div class="simpleLens-big-image-container"><a data-lens-image="'.$image.'" class="simpleLens-lens-image"><img src="'.$image.'" class="simpleLens-big-image"></a></div>
                       </div>
-                      <div class="simpleLens-thumbnails-container">
-                          <a data-big-image="img/view-slider/medium/polo-shirt-1.png" data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-thumbnail-wrapper" href="#">
-                            <img src="img/view-slider/thumbnail/polo-shirt-1.png">
-                          </a>                                    
-                          <a data-big-image="img/view-slider/medium/polo-shirt-3.png" data-lens-image="img/view-slider/large/polo-shirt-3.png" class="simpleLens-thumbnail-wrapper" href="#">
-                            <img src="img/view-slider/thumbnail/polo-shirt-3.png">
-                          </a>
-                          <a data-big-image="img/view-slider/medium/polo-shirt-4.png" data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper" href="#">
-                            <img src="img/view-slider/thumbnail/polo-shirt-4.png">
-                          </a>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
